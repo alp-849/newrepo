@@ -1,0 +1,102 @@
+// Ana sınıf Animal
+abstract class Animal {
+    private String species;
+    private double weight;
+    private int age;
+
+    public Animal(String species, double weight, int age) {
+        this.species = species;
+        this.weight = weight;
+        this.age = age;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public abstract double getDosage();
+
+    public abstract String getFeedSchedule();
+}
+
+// Atlar grubundaki hayvanlar için sınıf
+class Horse extends Animal {
+    public Horse(String species, double weight, int age) {
+        super(species, weight, age);
+    }
+
+    @Override
+    public double getDosage() {
+        // Atlar için ilaç dozajı hesaplaması
+        return 0.2 * getWeight();
+    }
+
+    @Override
+    public String getFeedSchedule() {
+        // Atlar için yem verme zamanları hesaplaması
+        return "Günde 2 kez yem verilir.";
+    }
+}
+
+// Kedigiller grubundaki hayvanlar için sınıf
+class Feline extends Animal {
+    public Feline(String species, double weight, int age) {
+        super(species, weight, age);
+    }
+
+    @Override
+    public double getDosage() {
+        // Kedigiller için ilaç dozajı hesaplaması
+        return 0.1 * getWeight();
+    }
+
+    @Override
+    public String getFeedSchedule() {
+        // Kedigiller için yem verme zamanları hesaplaması
+        return "Günde 3 kez yem verilir.";
+    }
+}
+
+// Kemirgenler grubundaki hayvanlar için sınıf
+class Rodent extends Animal {
+    public Rodent(String species, double weight, int age) {
+        super(species, weight, age);
+    }
+
+    @Override
+    public double getDosage() {
+        // Kemirgenler için ilaç dozajı hesaplaması
+        return 0.05 * getWeight();
+    }
+
+    @Override
+    public String getFeedSchedule() {
+        // Kemirgenler için yem verme zamanları hesaplaması
+        return "Günde 4 kez yem verilir.";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal horse = new Horse("At", 500, 5);
+        Animal lion = new Feline("Aslan", 300, 7);
+        Animal rat = new Rodent("Sıçan", 0.2, 1);
+
+        System.out.println(horse.getSpecies() + " ilaç dozajı: " + horse.getDosage());
+        System.out.println(horse.getSpecies() + " yem zamanları: " + horse.getFeedSchedule());
+
+        System.out.println(lion.getSpecies() + " ilaç dozajı: " + lion.getDosage());
+        System.out.println(lion.getSpecies() + " yem zamanları: " + lion.getFeedSchedule());
+
+        System.out.println(rat.getSpecies() + " ilaç dozajı: " + rat.getDosage());
+        System.out.println(rat.getSpecies() + " yem zamanları: " + rat.getFeedSchedule());
+    }
+}
